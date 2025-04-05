@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Dea ku!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8e1eb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff6b81;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .message {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .riddle, .question, .final-question, .closing {
+            margin-top: 40px;
+            font-size: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .answer {
+            display: none;
+            font-size: 22px;
+            color: #d63384;
+            margin-top: 10px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" autoplay loop>
+        <source src="https://www.example.com/la-da-dee.mp3" type="audio/mp3">
+        Browser Anda tidak mendukung pemutar musik.
+    </audio>
+    
+    <div class="container">
+        <h1>Selamat Ulang Tahun, Dea! 🎉</h1>
+        <img src="https://i.imgur.com/dClgPPs.jpg" alt="Foto Dea" class="profile-img">
+        <p class="message">Semoga hari ini penuh kebahagiaan dan cinta! Aku selalu ada untukmu. 💖</p>
+        
+        <div class="riddle">
+            <p>Tebak-tebakan: Aku ada di hatimu, selalu menemanimu, tapi tidak bisa kau lihat. Apa aku?</p>
+            <button class="button" onclick="document.getElementById('answer').style.display='block'">Lihat Jawaban</button>
+            <p id="answer" class="answer">Cinta dan kasih sayangku untukmu! ❤kalo kamu gk tahu suka siapa</p>
+        </div>
+        
+        <div class="question">
+            <p>Kapan bulan dan hari ku?</p>
+            <input type="text" id="userAnswer" placeholder="Jawab di sini">
+            <button class="button" onclick="checkAnswer()">Kirim</button>
+            <p id="response" class="answer" style="display:none;"></p>
+        </div>
+        
+        <div class="final-question">
+            <p>Tulis harapan dan keiginan mu disini</p>
+            <input type="text" id="finalAnswer" placeholder="Jawab di sini">
+            <button class="button" onclick="checkFinalAnswer()">Kirim</button>
+            <p id="finalResponse" class="answer" style="display:none;"></p>
+        </div>
+
+        <div class="closing" id="closing" style="display:none;">
+            <h2>SELAMAT ULANG TAHUN YA SAYANG 💖</h2>
+            <p>maaf ya kalo ada salah .maklum kamu pacar pertama .</p>
+            <p>ya walaupun cara ku kasih perhatian agak aneh hehe. semoga apa yg kamu mau jadi kenyataan LOVE YOU sayyy💕</p>
+        </div>
+    </div>
+    
+    <script>
+        function checkAnswer() {
+            var answer = document.getElementById('userAnswer').value.trim().toLowerCase();
+            var response = document.getElementById('response');
+            if (answer === "") {
+                alert("Kamu harus menjawab pertanyaan dulu!");
+                return;
+            }
+            if (answer === "merah" || answer === "mei 05" || answer === "pink") {
+                response.innerHTML = "❤anjayyy ❤";
+            } else {
+                response.innerHTML = "iya deh 😌";
+            }
+            response.style.display = "block";
+        }
+        
+        function checkFinalAnswer() {
+            var finalAnswer = document.getElementById('finalAnswer').value.trim();
+            var finalResponse = document.getElementById('finalResponse');
+            var closing = document.getElementById('closing');
+
+            if (finalAnswer === "") {
+                alert("Kamu harus menjawab pertanyaan dulu!");
+                return;
+            }
+
+            finalResponse.innerHTML = "Apa pun tujuan atau keinginanmu, kalau kamu butuh aku, aku bakal ada buat kamu 💖";
+            finalResponse.style.display = "block";
+
+            // Tampilkan kata penutup setelah jawaban terakhir dikirim
+            setTimeout(() => {
+                closing.style.display = "block";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
